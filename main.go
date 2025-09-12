@@ -47,11 +47,11 @@ func main() {
 	}
 
 	router := mux.NewRouter()
-	router.HandleFunc("/carBrands", createCarBrand).Methods("POST")
-	router.HandleFunc("/carBrands", getCarBrands).Methods("GET")
-	router.HandleFunc("/carBrands/{id}", getCarBrand).Methods("GET")
-	router.HandleFunc("/carBrands/{id}", updateCarBrand).Methods("PUT")
-	router.HandleFunc("/carBrands/{id}", deleteCarBrand).Methods("DELETE")
+	router.HandleFunc("/strategic_games", createGame).Methods("POST")
+	router.HandleFunc("/strategic_games", getGames).Methods("GET")
+	router.HandleFunc("/strategic_games/{id}", getGame).Methods("GET")
+	router.HandleFunc("/strategic_games/{id}", updateGame).Methods("PUT")
+	router.HandleFunc("/strategic_games/{id}", deleteGame).Methods("DELETE")
 
 	// Запуск сервера
 	log.Println("Сервер запущен, порт :8080")
