@@ -7,6 +7,7 @@ import (
 	// HTTP-сервер, обработка запроса
 	// Преобразование строки в число
 	// Роутер
+	"github.com/gorilla/mux"
 	_ "modernc.org/sqlite" // Драйвер SQLite
 )
 
@@ -44,6 +45,13 @@ func main() {
 	if err != nil {
 		log.Fatalf("DB open: %v", err)
 	}
+
+	router := mux.NewRouter()
+	router.HandleFunc("/carBrands", createCarBrand).Methods("POST")
+	router.HandleFunc("/carBrands", getCarBrands).Methods("GET")
+	router.HandleFunc("/carBrands/{id}", getCarBrand).Methods("GET")
+	router.HandleFunc("/carBrands/{id}", updateCarBrand).Methods("PUT")
+	router.HandleFunc("/carBrands/{id}", deleteCarBrand).Methods("DELETE")
 
 	// Запуск сервера
 	log.Println("Сервер запущен, порт :8080")
